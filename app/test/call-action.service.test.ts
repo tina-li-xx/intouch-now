@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import CallActionService from '../../component/call-action/call-action.service';
+import CallActionService from '../component/call-action/call-action.service';
 
 describe('CallActionService', () => {
   it('returns a routine GP appointment action for the sample transcript', () => {

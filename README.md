@@ -94,13 +94,11 @@ Error response:
 
 ```bash
 npm run test
-npm run test:unit
-npm run test:integration
 npm run lint
 npm run build
 ```
 
-Tests are split into unit and integration tests. `NODE_ENV=test` uses test OpenAI config from the env setup, and the tests do not call the OpenAI API.
+Tests use `NODE_ENV=test`, which loads test OpenAI config from the env setup. They do not call the OpenAI API.
 
 ## Approach
 
@@ -109,7 +107,7 @@ Tests are split into unit and integration tests. `NODE_ENV=test` uses test OpenA
 - Zod validates both the request body and the structured output.
 - Successful responses are returned under `body` with `status: true`.
 - The final recommended action is chosen in `call-action`, where emergency, missing-information, urgent, prescription, callback, and appointment routing rules are handled in code.
-- Unit tests cover call-action routing rules. Integration tests cover request validation, response shape, and unsupported routes without calling the OpenAI API.
+- Tests cover call-action routing rules, request validation, response shape, and unsupported routes without calling the OpenAI API.
 
 ## Assumptions
 

@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import request from 'supertest';
-import app from '../../app';
-import CallProcessingService from '../../component/call-processing/call-processing.service';
+import app from '../app';
+import CallProcessingService from '../component/call-processing/call-processing.service';
 
 describe('app', () => {
   it('returns the API welcome response', async () => {
