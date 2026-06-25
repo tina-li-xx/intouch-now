@@ -1,0 +1,41 @@
+{
+  "name": "intouchnow-ai-call-processing",
+  "version": "1.0.0",
+  "description": "Backend technical test for processing patient call transcripts into structured actions.",
+  "main": "dist/app/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch app --exec ts-node app/server.ts",
+    "lint": "tsc --noEmit",
+    "start": "node dist/app/server.js",
+    "test": "NODE_ENV=test OPENAI_API_KEY=test-key OPENAI_BASE_URL=https://api.openai.com/v1 OPENAI_MODEL=gpt-4o-mini node --test -r ts-node/register app/test/unit/*.test.ts app/test/integration/*.test.ts"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "llm",
+    "clinical-triage"
+  ],
+  "author": "Tina Li",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "@types/supertest": "^6.0.2",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  }
+}
