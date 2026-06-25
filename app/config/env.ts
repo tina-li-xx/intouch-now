@@ -7,9 +7,6 @@ interface AppEnvironmentConfig {
   openAiModel: string;
 }
 
-const OPENAI_BASE_URL = 'https://api.openai.com/v1';
-const OPENAI_MODEL = 'gpt-4o-mini';
-
 const envConfig: Record<AppEnvironment, () => AppEnvironmentConfig> = {
   development: () => ({
     openAiApiKey: requireEnv('OPENAI_API_KEY'),
@@ -17,9 +14,9 @@ const envConfig: Record<AppEnvironment, () => AppEnvironmentConfig> = {
     openAiModel: requireEnv('OPENAI_MODEL'),
   }),
   test: () => ({
-    openAiApiKey: process.env.OPENAI_API_KEY || 'test-key',
-    openAiBaseUrl: process.env.OPENAI_BASE_URL || OPENAI_BASE_URL,
-    openAiModel: process.env.OPENAI_MODEL || OPENAI_MODEL,
+    openAiApiKey: 'test-key',
+    openAiBaseUrl: 'https://api.openai.com/v1',
+    openAiModel: 'gpt-4o-mini',
   }),
 };
 
