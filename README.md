@@ -2,6 +2,12 @@
 
 Small TypeScript/Express API that accepts a patient call transcript, extracts structured information with OpenAI, validates the output, and returns the next recommended action.
 
+## Repository
+
+GitHub: https://github.com/tina-li-xx/intouch-now
+
+Default branch: `main`
+
 ## How to Run
 
 Requires Node.js 18 or newer.
