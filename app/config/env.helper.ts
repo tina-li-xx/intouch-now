@@ -1,8 +1,6 @@
-import { ENVIRONMENT } from './secrets';
-import envByEnvironment from './env';
+import env from './env';
 
-const { openAiApiKey, openAiBaseUrl, openAiModel } =
-  envByEnvironment[ENVIRONMENT];
+const { openAiApiKey, openAiBaseUrl, openAiModel } = env;
 
 const EnvHelper = {
   getPort(defaultPort = 8080) {

@@ -11,7 +11,7 @@ const fail = (message: string): never => {
   process.exit(1);
 };
 
-const requireEnv = (name: string) => {
+export const requireEnv = (name: string) => {
   const value = process.env[name];
   if (!value) return fail(`${name} must not be undefined`);
   return value;
@@ -28,6 +28,3 @@ const readEnvironment = (): AppEnvironment => {
 };
 
 export const ENVIRONMENT = readEnvironment();
-export const OPENAI_API_KEY = requireEnv('OPENAI_API_KEY');
-export const OPENAI_BASE_URL = requireEnv('OPENAI_BASE_URL');
-export const OPENAI_MODEL = requireEnv('OPENAI_MODEL');

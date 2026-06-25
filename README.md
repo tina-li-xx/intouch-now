@@ -94,11 +94,13 @@ Error response:
 
 ```bash
 npm run test
+npm run test:unit
+npm run test:integration
 npm run lint
 npm run build
 ```
 
-Tests are split into unit and integration tests. They do not call the OpenAI API.
+Tests are split into unit and integration tests. `NODE_ENV=test` uses test OpenAI config from the env setup, and the tests do not call the OpenAI API.
 
 ## Approach
 

@@ -8,7 +8,9 @@
     "dev": "nodemon --watch app --exec ts-node app/server.ts",
     "lint": "tsc --noEmit",
     "start": "node dist/app/server.js",
-    "test": "NODE_ENV=test OPENAI_API_KEY=test-key OPENAI_BASE_URL=https://api.openai.com/v1 OPENAI_MODEL=gpt-4o-mini node --test -r ts-node/register app/test/unit/*.test.ts app/test/integration/*.test.ts"
+    "test": "NODE_ENV=test node --test -r ts-node/register app/test/unit/*.test.ts app/test/integration/*.test.ts",
+    "test:unit": "NODE_ENV=test node --test -r ts-node/register app/test/unit/*.test.ts",
+    "test:integration": "NODE_ENV=test node --test -r ts-node/register app/test/integration/*.test.ts"
   },
   "keywords": [
     "express",

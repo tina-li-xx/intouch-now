@@ -1,5 +1,5 @@
 import type { AppEnvironment } from './secrets';
-import { OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL } from './secrets';
+import { ENVIRONMENT, requireEnv } from './secrets';
 
 interface AppEnvironmentConfig {
   openAiApiKey: string;
@@ -7,19 +7,20 @@ interface AppEnvironmentConfig {
   openAiModel: string;
 }
 
-const sharedOpenAiConfig: AppEnvironmentConfig = {
-  openAiApiKey: OPENAI_API_KEY,
-  openAiBaseUrl: OPENAI_BASE_URL,
-  openAiModel: OPENAI_MODEL,
+const OPENAI_BASE_URL = 'https://api.openai.com/v1';
+const OPENAI_MODEL = 'gpt-4o-mini';
+
+const envConfig: Record<AppEnvironment, () => AppEnvironmentConfig> = {
+  development: () => ({
+    openAiApiKey: requireEnv('OPENAI_API_KEY'),
+    openAiBaseUrl: requireEnv('OPENAI_BASE_URL'),
+    openAiModel: requireEnv('OPENAI_MODEL'),
+  }),
+  test: () => ({
+    openAiApiKey: process.env.OPENAI_API_KEY || 'test-key',
+    openAiBaseUrl: process.env.OPENAI_BASE_URL || OPENAI_BASE_URL,
+    openAiModel: process.env.OPENAI_MODEL || OPENAI_MODEL,
+  }),
 };
 
-const envConfig: Record<AppEnvironment, AppEnvironmentConfig> = {
-  development: {
-    ...sharedOpenAiConfig,
-  },
-  test: {
-    ...sharedOpenAiConfig,
-  },
-};
-
-export default envConfig;
+export default envConfig[ENVIRONMENT]();
